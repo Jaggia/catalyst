@@ -7,7 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class RegisterAuthService {
 
   // domain = "http://localhost:8080"; // Development Domain - Not Needed in Production
-  domain = "https://sheltered-coast-31311.herokuapp.com/"; // Development Domain - Not Needed in Production
+  domain = 'https://git.heroku.com/catalyst22.git'; // Development Domain - Not Needed in Production
   loginAuthToken;
   role;
   options;

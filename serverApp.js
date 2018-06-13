@@ -37,10 +37,10 @@ app.use(session({
 }));
 
 // Middleware
-app.use(cors({
+// app.use(cors({
   // origin: 'http://localhost:4200'
-  origin: 'https://catalyst22.herokuapp.com/'
-}));//remove in final product erino accino erini
+  // origin: 'https://catalyst22.herokuapp.com/'
+// }));//remove in final product erino accino erini
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 app.use(express.static(__dirname + '/dist/')); // Provide static directory for frontend

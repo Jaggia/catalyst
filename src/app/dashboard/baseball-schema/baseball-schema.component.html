@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+
+  <!-- First Name Input -->
+  <div class="form-group">
+    <label for="pitchSpeed">Pitch Speed</label>
+    <div [ngClass]="{'has-error': (form.controls.pitchSpeed.errors && form.controls.pitchSpeed.dirty), 'has-success': (!form.controls.pitchSpeed.errors && form.controls.pitchSpeed.dirty) }">
+      <input type="text" (keypress)="validate($event)" name="pitchSpeed" class="form-control" autocomplete="off" placeholder="NumbersOnly" formControlName="pitchSpeed" />
+      <!-- Validation -->
+      <ul class="help-block">
+        <li *ngIf="form.controls.pitchSpeed.errors?.required && form.controls.pitchSpeed.dirty">This field is required</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Submit Input -->
+  <!--<input type="submit" class="btn btn-primary" value="Submit" />-->
+  <!--[disabled]="!form.valid || processing || !emailValid || !usernameValid"-->
+</form>

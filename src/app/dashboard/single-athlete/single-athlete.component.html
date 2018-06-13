@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="page-header">Edit Athlete</h2>
+  <ul>
+    <li class="list-group-item">First Name : {{ firstname }}</li>
+    <li class="list-group-item">Last Name : {{ lastname }}</li>
+  </ul>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let field of bball_schema_props; let i = index">
+      {{field}} : {{bball_schema_vals[i]}}
+      <span style="float: right">
+        Change {{field}}:
+      <input id="{{field}}" type="text" name="username">
+        <!--value="{{bball_schema_vals[i]}}">-->
+      <button class="btn btn-large" (click)="changeBasketBall()">
+        Change
+      </button>
+      </span>
+    </li>
+  </ul>
+
+  <!--<form class="col-md-6" (submit)="changeField()">-->
+    <!--Change first name:-->
+    <!--<input id="newFirstname" type="text" name="username">-->
+    <!--<button class="btn btn-large" (click)="changeField()">-->
+      <!--Change-->
+    <!--</button>-->
+  <!--</form>-->
+
+</div>

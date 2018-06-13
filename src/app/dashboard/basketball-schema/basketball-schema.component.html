@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+
+  <!-- First Name Input -->
+  <div class="form-group">
+    <label for="PTA2">Points</label>
+    <div [ngClass]="{'has-error': (form.controls.PTA2.errors && form.controls.PTA2.dirty), 'has-success': (!form.controls.PTA2.errors && form.controls.PTA2.dirty) }">
+      <input type="text" (keypress)="validate($event)" name="PTA2" class="form-control" autocomplete="off" placeholder="NumbersOnly" formControlName="PTA2" />
+      <!-- Validation -->
+      <ul class="help-block">
+        <li *ngIf="form.controls.PTA2.errors?.required && form.controls.PTA2.dirty">This field is required</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Submit Input -->
+  <!--<input type="submit" class="btn btn-primary" value="Submit" />-->
+  <!--[disabled]="!form.valid || processing || !emailValid || !usernameValid"-->
+</form>

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-4">
+    <app-side-bar (change)="sideBarContentChange($event)"></app-side-bar>
+  </div>
+
+  <div class="col-md-8">
+    <!-- Custom Success/Error Message -->
+    <div class="row show-hide-message">
+      <div [ngClass]="messageClass">
+        {{ message }}
+      </div>
+    </div>
+
+
+    <div>
+      <app-add-athlete *ngIf="sideBarContent == 1"></app-add-athlete>
+      <app-add-recruit *ngIf="sideBarContent == 2"></app-add-recruit>
+    </div>
+
+  </div>
+
+</div>

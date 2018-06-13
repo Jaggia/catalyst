@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="page-header">Profile Page</h2>
+  <ul>
+    <li class="list-group-item">Username : {{ username }}</li>
+    <li class="list-group-item">Email : {{ email }}</li>
+  </ul>
+
+  <button class="btn btn-large" (click)="changeUsername()">
+    Change UN
+  </button>
+
+  <form (submit)="changeUsername()">
+    Change username:<br>
+    <input id="inputUserName" type="text" name="username"><br>
+  </form>
+
+</div>

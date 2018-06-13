@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+
+  <!-- First Name Input -->
+  <div class="form-group">
+    <label for="fortyDash">Forty Yard Dashrs</label>
+    <div [ngClass]="{'has-error': (form.controls.fortyDash.errors && form.controls.fortyDash.dirty), 'has-success': (!form.controls.fortyDash.errors && form.controls.fortyDash.dirty) }">
+      <input type="text" (keypress)="validate($event)" name="fortyDash" class="form-control" autocomplete="off" placeholder="NumbersOnly" formControlName="fortyDash" />
+      <!-- Validation -->
+      <ul class="help-block">
+        <li *ngIf="form.controls.fortyDash.errors?.required && form.controls.fortyDash.dirty">This field is required</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Submit Input -->
+  <!--<input type="submit" class="btn btn-primary" value="Submit" />-->
+  <!--[disabled]="!form.valid || processing || !emailValid || !usernameValid"-->
+</form>

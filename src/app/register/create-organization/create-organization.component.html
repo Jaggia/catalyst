@@ -1,0 +1,45 @@
+
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+
+<!-- Registration Form -->
+<form [formGroup]="form">
+
+  <!-- First Name Input -->
+  <div class="form-group">
+    <label for="organizationname">Organization Name</label>
+    <div [ngClass]="{'has-error': (form.controls.organizationname.errors && form.controls.organizationname.dirty) || (!organValid && form.controls.organizationname.dirty),
+           'has-success': !form.controls.organizationname.errors && organValid}">
+      <input type="text" name="organizationname" class="form-control" autocomplete="off" placeholder="*organizationName" formControlName="organizationname" (blur)="checkOrganization()"/>
+      <ul class="help-block">
+        <li *ngIf="form.controls.organizationname.errors?.required && form.controls.organizationname.dirty">This field is required</li>
+        <li *ngIf="form.controls.organizationname.errors?.minlength && form.controls.organizationname.dirty || form.controls.organizationname.errors?.maxlength && form.controls.organizationname.dirty ">Minimum characters: 3, Maximum characters: 15</li>
+        <li *ngIf="form.controls.organizationname.errors?.validateOrganization && form.controls.organizationname.dirty">Organization must not have any special characters</li>
+        <li *ngIf="organMessage"> {{ organMessage }} </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Loc Input -->
+  <div class="form-group">
+    <label for="location">Location</label>
+    <div [ngClass]="{'has-error': (form.controls.location.errors && form.controls.location.dirty),
+           'has-success': !form.controls.location.errors}">
+      <input type="text" name="location" class="form-control" autocomplete="off" placeholder="*location" formControlName="location" />
+    </div>
+    <ul class="help-block">
+      <li *ngIf="form.controls.location.errors?.required && form.controls.location.dirty">This field is required</li>
+      <li *ngIf="form.controls.location.errors?.validateOrganization && form.controls.location.dirty">Location must not have any special characters</li>
+    </ul>
+  </div>
+
+  <!-- Submit Input -->
+  <!--<input [disabled]="!form.valid || processing || !organValid" type="submit" class="btn btn-primary" value="Submit" />-->
+
+</form>
+<!-- Registration Form /-->

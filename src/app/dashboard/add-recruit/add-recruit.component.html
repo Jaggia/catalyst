@@ -1,0 +1,61 @@
+<div>
+  <!-- Custom Success/Error Message -->
+  <div class="row show-hide-message">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
+  <form *ngIf="formVisible" [formGroup]="form" (submit)="onRecruitCreateSubmit()">
+
+    <!-- First Name Input -->
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <div [ngClass]="{'has-error': (form.controls.firstname.errors && form.controls.firstname.dirty), 'has-success': !form.controls.firstname.errors}">
+        <input type="text" name="firstname" class="form-control" autocomplete="off" placeholder="*FirstName" formControlName="firstname" />
+        <!-- Validation -->
+        <ul class="help-block">
+          <li *ngIf="form.controls.firstname.errors?.required && form.controls.firstname.dirty">This field is required</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Last Name Input -->
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <div [ngClass]="{'has-error': (form.controls.lastname.errors && form.controls.lastname.dirty), 'has-success': !form.controls.lastname.errors}">
+        <input type="text" name="lastname" class="form-control" autocomplete="off" placeholder="*LastName" formControlName="lastname" />
+        <!-- Validation -->
+        <ul class="help-block">
+          <li *ngIf="form.controls.lastname.errors?.required && form.controls.lastname.dirty">This field is required</li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="sportsList">
+      <app-baseball-schema *ngIf="sportsList.sport.baseball" >
+      </app-baseball-schema>
+      <app-football-schema *ngIf="sportsList.sport.football" >
+      </app-football-schema>
+    </div>
+
+    <div>
+
+    </div>
+
+
+    <!-- Submit Input -->
+    <input type="submit" class="btn btn-primary" value="Submit" />
+    <!--[disabled]="!form.valid || processing || !emailValid || !usernameValid"-->
+  </form>
+  <!-- Registration Form /-->
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let recruit of recruits">
+      {{recruit.firstname}}
+    </li>
+  </ul>
+
+  <button class="btn btn-primary" (click)="makeVisible()">
+    Add Recruit
+  </button>

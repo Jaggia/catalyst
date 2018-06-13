@@ -1,0 +1,29 @@
+<div class="container">
+  <!-- Custom Success/Error Message -->
+  <div class="row show-hide-message">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+  <h2 class="page-header">Admin Page</h2>
+
+  <ul *ngIf="listVisible; else userView">
+    <li *ngFor="let names of users" class="list-group-item menu_links" (click)="getUser(names._id)">
+      {{names.firstname}} {{names.lastname}}
+    </li>
+  </ul>
+  <ng-template #userView>
+    <ul>
+      <li class="list-group-item">
+        First Name : {{user.firstname}}
+      </li>
+      <li class="list-group-item">
+        Last Name : {{user.lastname}}
+      </li>
+    </ul>
+    <button class="btn btn-primary" (click)="goBack()">
+      Back
+    </button>
+  </ng-template>
+
+</div>

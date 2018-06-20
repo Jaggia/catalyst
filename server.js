@@ -77,12 +77,29 @@
 
 
 
-
 //Install express server
 const express = require('express');
 const path = require('path');
-
 const app = express();
+//lets require/import the mongodb native drivers.
+const mongodb = require('mongodb');
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+const MongoClient = mongodb.MongoClient;
+// Connection URL. This is where your mongodb server is running.
+//(Focus on This Variable)
+const config = require('./serverSide/config/database'); // Mongoose Config
+const url = config.uri;
+//(Focus on This Variable)
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+    if (err) {
+        console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+        console.log('Connection established to', url);
+        db.close();
+    }
+});
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist'));
@@ -90,6 +107,8 @@ app.use(express.static(__dirname + '/dist'));
 app.get('/*', function(req,res) {
     res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
+app.use('/authentication', authentication);
+app.use('/sportAuthentication', sportAuthentication);
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);

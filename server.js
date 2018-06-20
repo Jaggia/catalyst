@@ -87,8 +87,8 @@ const mongoose = require('mongoose'); // Node Tool for MongoDB
 const db = "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22";
 
 const router = express.Router(); // Creates a new router object.
-const authentication = require('./routes/authenticationUser')(router, session); // Import Authentication Routes
-const sportAuthentication = require('./routes/authenticationSport')(router, session); // Import Authentication Routes
+const authentication = require('./routes/authenticationUser')(router); // Import Authentication Routes
+const sportAuthentication = require('./routes/authenticationSport')(router); // Import Authentication Routes
 
 mongoose.connect(db, err => {
   if (err) {

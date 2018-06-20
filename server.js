@@ -86,6 +86,10 @@ const app = express();
 const mongoose = require('mongoose'); // Node Tool for MongoDB
 const db = "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22";
 
+const router = express.Router(); // Creates a new router object.
+const authentication = require('./routes/authenticationUser')(router, session); // Import Authentication Routes
+const sportAuthentication = require('./routes/authenticationSport')(router, session); // Import Authentication Routes
+
 mongoose.connect(db, err => {
   if (err) {
     console.log('Could NOT connect to database: ', err);
@@ -96,7 +100,8 @@ mongoose.connect(db, err => {
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist'));
-
+app.use('/authentication', authentication);
+app.use('/sportAuthentication', sportAuthentication);
 app.get('/*', function(req,res) {
     res.sendFile(path.join(__dirname+'/dist/index.html'));
 });

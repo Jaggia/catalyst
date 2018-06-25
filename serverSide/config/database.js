@@ -1,8 +1,8 @@
 const crypto = require('crypto').randomBytes(256).toString('hex');
 
 module.exports = {
-  uri : 'mongodb://localhost:27017/startingDBase',
-  // uri : 'mongodb://heroku_3kwncw54:zmK-Bgf-yHM-2qE@ds263460.mlab.com:63460/heroku_3kwncw54',
+  // uri : 'mongodb://localhost:27017/startingDBase',
+    uri : "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22",
   secret : crypto,
   db : 'startingDBase',
 }

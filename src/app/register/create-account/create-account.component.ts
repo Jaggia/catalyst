@@ -168,6 +168,7 @@ export class CreateAccountComponent implements OnInit{
         location : organLoc
         // sport : sportSchema
       };
+      // console.log(organization)
       // console.log(sportSchema.baseball);
       // console.log(sportSchema.football);
         this.authService.createOrganization(organization).subscribe(data => {
@@ -228,8 +229,8 @@ export class CreateAccountComponent implements OnInit{
         email: this.form.get('email').value, // E-mail input field
         username: this.form.get('username').value, // Username input field
         password: this.form.get('password').value, // Password input field
-        role: this.isAdmin, //user/admin?
-        organization : this.form.get('organization').value, //new organization
+        role: this.isAdmin, //  user/admin?
+        organization : this.form.get('organization').value, //  new organization
         // sport : sportSchema
       };
 

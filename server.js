@@ -96,7 +96,7 @@ app.use(session({
     resave: false, //don't save session if unmodified
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
-        url: config.uri,
+        url: db,
         ttl: 3600*24 // time period in seconds
     })
 }));

@@ -101,8 +101,8 @@ mongoose.connect(db, err => {
   }
 });
 
-app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
-app.use(bodyParser.json()); // parse application/json
+// app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+// app.use(bodyParser.json()); // parse application/json
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist'));
 app.use('/authentication', authentication);

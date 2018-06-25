@@ -87,6 +87,7 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose'); // Node Tool for MongoDB
+const config = require('./serverSide/config/database'); // Mongoose Config
 const db = "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22";
 // Session mgmt
 app.use(session({

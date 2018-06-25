@@ -82,6 +82,9 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const cors = require('cors');
+
+app.use(cors());//remove in final product erino accino erini
 
 const mongoose = require('mongoose'); // Node Tool for MongoDB
 const db = "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22";
@@ -98,6 +101,8 @@ mongoose.connect(db, err => {
   }
 });
 
+app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist'));
 app.use('/authentication', authentication);

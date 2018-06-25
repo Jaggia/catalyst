@@ -84,10 +84,21 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
-app.use(cors());//remove in final product erino accino erini
 
 const mongoose = require('mongoose'); // Node Tool for MongoDB
 const db = "mongodb://Jaggia_Database:RLA-u9s-n8R-mrz@ds263520.mlab.com:63520/catalyst22";
+// Session mgmt
+app.use(session({
+    secret: config.secret,
+    saveUninitialized: false, // don't create session until something stored
+    resave: false, //don't save session if unmodified
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+        url: config.uri,
+        ttl: 3600*24 // time period in seconds
+    })
+}));
+app.use(cors());
 
 const router = express.Router(); // Creates a new router object.
 const authentication = require('./routes/authenticationUser')(router); // Import Authentication Routes

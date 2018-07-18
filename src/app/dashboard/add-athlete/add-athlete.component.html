@@ -44,6 +44,29 @@
     </div>
   </div>
 
+  <!-- Confirm Admin Input -->
+  <div class="form-group">
+    <label for="organization">Organization</label>
+    <select name="organization"
+            class="form-control"
+            formControlName="organization">
+      <option value="">Select...</option >
+      <option value="New">New Organization</option>
+      <option *ngFor="let organization of organizations" value="{{ organization._id }}">
+        {{ organization.organizationname }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="this.form.get('organization').value === 'New'; else elseBlock">
+    <app-create-organization></app-create-organization>
+    <!--<app-create-sport radioORcheck="checkbox"></app-create-sport>-->
+  </div>
+  <ng-template #elseBlock>
+    <!--<app-create-sport radioORcheck="radio"></app-create-sport>-->
+  </ng-template>
+  <!--<app-create-sport></app-create-sport>-->
+
   <!--<app-basketball-schema></app-basketball-schema> PTA2-->
   <!--<div *ngIf="sportsList">-->
     <!--<app-baseball-schema *ngIf="sportsList.sport.baseball" >-->

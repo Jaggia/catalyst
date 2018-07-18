@@ -168,9 +168,6 @@ export class CreateAccountComponent implements OnInit{
         location : organLoc
         // sport : sportSchema
       };
-      // console.log(organization)
-      // console.log(sportSchema.baseball);
-      // console.log(sportSchema.football);
         this.authService.createOrganization(organization).subscribe(data => {
           if (data.success) {
             this.messageClass = 'alert alert-success'; // Set a success class

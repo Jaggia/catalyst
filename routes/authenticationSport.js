@@ -44,31 +44,21 @@ module.exports = (router, session) => {
       TOPG : 0, MIN : 0, PTS : 0, TRB : 0, FF : 0, TECHF : 0, DQ : 0, GS : 0, TF : 0, W : 0, L : 0, T : 0
     });
 
-    User.findOne({ _id: req.decoded.userId }).select('organization').exec((err, organID) => {
-      if (err) {
-        res.json({ success: false, message: err }); // Return error
-      } else {
-        if (!organID) {
-          res.json({ success: false, message: 'We do not have any organizations' }); // Return error, organs was not found in db
-        } else {
-          BasketballSchema.createBasketballSchema(basketballSchema, function(err){
-            if (err) {
+      BasketballSchema.createBasketballSchema(basketballSchema, function(err){
+          if (err) {
               if (err.errors) {
-                // Check if validation error is in the email field
-                if (err.errors.PTA2) {
-                  res.json({ success: false, message: err.errors.PTA2.message }); // Return error
-                }
+                  // Check if validation error is in the email field
+                  if (err.errors.PTA2) {
+                      res.json({ success: false, message: err.errors.PTA2.message }); // Return error
+                  }
               } else {
-                res.json({ success: false, message: 'Could not save BasketballSchema. Error: ', err }); // Return error if not related to validation
+                  res.json({ success: false, message: 'Could not save BasketballSchema. Error: ', err }); // Return error if not related to validation
               }
-            } else {
-              res.json({ success: true, message: 'BasketballSchema registered!', organID : organID.organization,
-                basketballSchemaID: basketballSchema._id }); // Return success
-            }
-          });
-        }
-      }
-    })
+          } else {
+              res.json({ success: true, message: 'BasketballSchema registered!',
+                  basketballSchemaID: basketballSchema._id }); // Return success
+          }
+      });
   });
 
 
